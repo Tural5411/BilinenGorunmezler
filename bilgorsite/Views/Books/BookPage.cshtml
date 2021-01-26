@@ -1,0 +1,161 @@
+﻿@model bilgorsite.ViewModel.KitabVM
+    @using PagedList.Mvc;   
+    @using bilgorsite.Utilities;
+@using bilgorsite.Helper
+@{
+    ViewBag.Title = "BookPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <link href="~/Content/PagedLists.css" rel="stylesheet" />
+<div style="background-color:whitesmoke;" id="main-content">
+    <div class="content-area">
+        <div class="page-title">
+            <div class="main-top" style="background-image: url(/Upload/images/kitab.jpg);">
+                <div class="overlay-top-header"></div>
+                <div class="content container">
+                    <h1>
+                        Kitablar
+                    </h1>
+                    <div class="wrap-breadcrumb">
+                        <ul class="breadcrumbs">
+                            <li>
+                                <a href="javascript:;">
+                                    Ana Səhifə
+                                </a>
+                            </li>
+                            <li>
+                                <span class="breadcrum-icon">/</span>
+                                Kitablar
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-content sidebar-right layout-1">
+            <div class="container">
+                <div class="row">
+                    <main class="site-main col-lg-9">
+                        <div class="wrap-main-content">
+                            <div class="products-list">
+                                <div class="wrap-element">
+                                    <div class="heading-products">
+                                        <div class="results">
+                                            Kitabların sayı @Model.books.Count()
+                                        </div>
+                                        <div class="sorting-select">
+                                            <label data-style="vblog-shop-page">
+                                                <select onchange="location=this.value">
+                                                    <option>Sırala</option>
+                                                    <option value="@Url.Action("BookPage","Books",new {searchTerm=Model.searchTerm,sortBy=(int)BookEnum.DateTime})">Tarixə görə</option>
+                                                    <option value="@Url.Action("BookPage","Books",new {searchTerm=Model.searchTerm,sortBy=(int)BookEnum.Name})">Ada görə</option>
+                                                    <option value="@Url.Action("BookPage","Books",new {searchTerm=Model.searchTerm,sortBy=(int)BookEnum.Default})">Populyar</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        @foreach (var x in Model.books)
+                                        {
+                                            <div class="col-sm-6 col-md-4">
+                                                <div class="item-product">
+                                                    <div class="media-item">
+                                                        <div class="pic">
+                                                            <a href="/Books/@SeoHelper.ToSeoUrl(x.Name).ToLower()-@x.BookId"><img width="240" height="325" src="@x.tbl_photo.URL" alt="@x.Name"></a>
+                                                        </div>
+                                                        <a href="/Books/@SeoHelper.ToSeoUrl(x.Name).ToLower()-@x.BookId" class="btn-addcart">
+                                                            <i class="fas fa-file-download"></i>
+                                                            Ətraflı
+                                                        </a>
+                                                    </div>
+                                                    <div class="text-item">
+                                                        <h4 class="title">
+                                                            
+                                                            <a href="/Books/@SeoHelper.ToSeoUrl(x.Name).ToLower()-@x.BookId">
+                                                                @x.Name
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <ul class="loop-pagination">
+                                    @*@(Model.books.PageCount < Model.books.PageNumber ? 0 : Model.books.PageNumber) of @Model.books.PageCount*@
+                                    @Html.PagedListPager(Model.books, page => Url.Action("BookPage", new { page }))
+                                </ul>
+                            </div>
+
+                        </div>
+                    </main>
+                    <div class="widget-area col-sm-9 col-md-8 col-lg-3 sticky-sidebar">
+                        <aside class="widget widget_search">
+                            <form class="search-form" action="@Url.Action("BookPage","Books",new { })">
+                                <label>
+                                    <span class="screen-reader-text">Search for:</span>
+                                    <input type="hidden" name="sortBy" value="@Model.sortBy" />
+                                    <input class="search-field" name="searchTerm" type="text" placeholder="Axtardığınız kitabı yazın ?">
+                                </label>
+                                <input class="search-submit" type="submit" value="Search">
+                            </form>
+                        </aside>
+                        <aside class="widget widget_product_categories">
+                            <h3 class="widget-title">
+                                Kİtab Kateqorİyaları
+                            </h3>
+                            <select onchange="location=this.value" class="form-control">
+                                <option disabled>Kateqoriya Seçin</option>
+                                @foreach (var x in Model.categories)
+                                {
+
+                                    <option class="form-control"
+                                            value="@Url.Action("BookPage","Books",new { id=x.BookCategoryId,sortBy=Model.sortBy})">
+                                        @x.Name
+                                    </option>
+                                }
+                            </select>
+                        </aside>
+                        @{
+                            Html.RenderAction("PopularPost", "Books");
+                        }
+                    <aside>
+                        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                        <div class="elfsight-app-5a4e12fd-55a4-449c-ab7a-7cb0fb423187"></div>
+                    </aside>
+                        <aside class="widget widget_tag_cloud">
+                            <h3 class="widget-title">
+                                Etİketlər
+                            </h3>
+                            <div class="tagcloud">
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Bilgör
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Bilinən Görünməzlər
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Psixalogiya
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Mistika
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Metafizika
+                                </a>
+                            </div>
+                        </aside>
+                        <aside class="widget widget_text">
+                            <div class="textwidget">
+                                <a href="javascript:;">
+                                    <img src="~/PublicFront/assets/images/ads-04.jpg" alt="IMG">
+                                </a>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

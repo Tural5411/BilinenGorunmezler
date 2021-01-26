@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "AddRole";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="page-title">Rol Əlavə Etmək</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Form -->
+                    <form method="post" action="/AdminPanel/AdminRole/AddRole">
+                        <div class="form-group">
+                            <label>Rol adı</label>
+                            <input class="form-control" type="text" placeholder="Rol Adı" name="roleName">
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary" type="submit">Əlavə Et</button>
+                            <a href="ratingstype.html" class="btn btn-link">Cancel</a>
+                        </div>
+                    </form>
+                    <!-- /Form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

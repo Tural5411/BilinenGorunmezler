@@ -1,0 +1,131 @@
+﻿@model IEnumerable<bilgorsite.Models.tbl_book>
+
+    <div class="bp-element bp-element-st-list-videos vblog-layout-slider-1">
+        <div class="wrap-element">
+            <div class="heading-post">
+                <h3 class="title">
+                    Kİtablar
+                </h3>
+                <a href="@Url.Action("BookPage","Books")" class="link">
+                    Hamısına bax
+                </a>
+            </div>
+            <div class="list-posts">
+                <div class="slide-posts js-call-slick-col" data-numofshow="4" data-numofscroll="1" data-loopslide="1" data-autoscroll="0" data-speedauto="6000" data-responsive="[4, 1], [4, 1], [3, 1], [2, 1], [1, 1]">
+                    <div class="wrap-arrow-slick">
+                        <div class="arow-slick prev-slick">
+                            <i class="ion ion-ios-arrow-left"></i>
+                        </div>
+                        <div class="arow-slick next-slick">
+                            <i class="ion ion-ios-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div class="slide-slick">
+                        @foreach (var x in Model)
+                        {
+                            <div class="item-slick">
+                                <div class="post-item">
+                                    <div class="pic">
+                                        <img width="270" height="400" src="@x.tbl_photo.URL" alt="@x.Name">
+                                        <div class="overlay"></div>
+                                        <div class="meta-info">
+                                            <div class="label" style="background: #e40914;">
+                                                @x.tbl_Writer.FullName
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 class="title">
+                                        <a href="@Url.Action("BookDetail","Books",new { id=x.BookId})">
+                                            @x.Name
+                                        </a>
+                                    </h4>
+                                    <div class="info">
+                                        @x.tbl_bookCategory.Name
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="item-slick">
+                            <div class="post-item">
+                                <div class="pic">
+                                    <img src="assets/images/post-01.jpg" alt="IMG">
+                                    <div class="overlay"></div>
+                                    <div class="meta-info">
+                                        <div class="imdb">
+                                            <span class="value">5</span>IMDb
+                                        </div>
+                                        <div class="label" style="background: #e40914;">
+                                            Hot
+                                        </div>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=NEqtQYxzQaE" class="btn-play popup-youtube">
+                                    </a>
+                                </div>
+                                <h4 class="title">
+                                    <a href="javascript:;">
+                                        How To Make a Pimple Disappear With Makeup
+                                    </a>
+                                </h4>
+                                <div class="info">
+                                    Action, Drama
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-slick">
+                            <div class="post-item">
+                                <div class="pic">
+                                    <img src="assets/images/post-02.jpg" alt="IMG">
+                                    <div class="overlay"></div>
+                                    <div class="meta-info">
+                                        <div class="imdb">
+                                            <span class="value">5</span>IMDb
+                                        </div>
+                                        <div class="label" style="background: #ff6c00;">
+                                            Trend
+                                        </div>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=NEqtQYxzQaE" class="btn-play popup-youtube">
+                                    </a>
+                                </div>
+                                <h4 class="title">
+                                    <a href="single-video.html">
+                                        How To Make a Pimple Disappear With Makeup
+                                    </a>
+                                </h4>
+                                <div class="info">
+                                    Action, Drama
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-slick">
+                            <div class="post-item">
+                                <div class="pic">
+                                    <img src="assets/images/post-03.jpg" alt="IMG">
+                                    <div class="overlay"></div>
+                                    <div class="meta-info">
+                                        <div class="imdb">
+                                            <span class="value">5</span>IMDb
+                                        </div>
+                                        <div class="label" style="background: #e40914;">
+                                            NEW
+                                        </div>
+                                    </div>
+                                    <a href="https://www.youtube.com/watch?v=NEqtQYxzQaE" class="btn-play popup-youtube">
+                                    </a>
+                                </div>
+                                <h4 class="title">
+                                    <a href="single-video.html">
+                                        How To Make a Pimple Disappear With Makeup
+                                    </a>
+                                </h4>
+                                <div class="info">
+                                    Action, Drama
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

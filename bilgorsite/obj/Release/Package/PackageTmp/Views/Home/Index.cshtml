@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div id="main-content" style="background: #1e1e1e;">
+        <div class="thim-banner_home-1" style="background-image: url(/PublicFront/assets/images/bg-01.jpg);">
+            <div class="overlay-area"></div>
+            <div class="container">
+                <!--SINGLE HERO-->
+                @{
+                    Html.RenderAction("SingleHero", "Hero");
+                }
+
+                <!-- HEROS-->
+                @{
+                    Html.RenderAction("Heros", "Hero");
+                }
+
+            </div>
+        </div>
+
+        <div class="thim-popular-video_home-1">
+            <div class="container">
+                <!-- Books-->
+                @{
+                    Html.RenderAction("BookList", "Books");
+                }
+
+
+            </div>
+        </div>
+        <div class="thim-ads_home-1">
+            <div class="container">
+
+                <div class="bp-element bp-element-call-to-action vblog-layout-1">
+                    <div class="wrap-element" style="background-image: url(assets/images/ads-01.jpg);">
+                        <div class="overlay"></div>
+                        <a href="javascript:;" class="content">
+                            <div class="text">
+                                Bilinən görünməzlər 
+                            </div>
+                            <div class="btn-readmore btn-small shape-round">
+                               Ətraflı
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="thim-latest-video_home-1">
+            <div class="container">
+                @{
+                    Html.RenderAction("PostList","Posts");
+                }
+
+            </div>
+        </div>
+    </div>

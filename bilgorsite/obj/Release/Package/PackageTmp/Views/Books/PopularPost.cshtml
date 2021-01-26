@@ -1,0 +1,41 @@
+﻿@model bilgorsite.ViewModel.KitabVM
+<aside class="widget widget_thim_layout_builder">
+
+    <div class="bp-element bp-element-products vblog-layout-list-1">
+        <div class="wrap-element">
+            <div class="heading-products">
+                <h3 class="title">
+                    Populyar
+                </h3>
+            </div>
+            <div class="list-products">
+                @foreach (var s in Model.posts)
+                {
+                    <div class="product-item">
+                        <a href="single-shop.html" class="pic">
+                            <img height="95" src="@s.tbl_photo.URL" alt="@s.Title">
+                        </a>
+                        <div class="text">
+                            <h4 class="title">
+                                <a href="@Url.Action("PostDetail","Posts",new { id=s.PostId})">
+                                    @s.Title
+                                </a>
+                            </h4>
+                            <span >
+                                    <span>
+                                        <span >@s.tbl_category.Name</span>
+                                    </span>
+                                    <span >  
+                                        <i class="fas fa-user"></i>
+                                        <span >@s.DateTime.Value.ToShortDateString()</span>
+                                    </span>
+                            </span>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+</aside>

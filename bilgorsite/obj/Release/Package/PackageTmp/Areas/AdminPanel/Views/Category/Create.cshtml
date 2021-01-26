@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2">
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="page-title">Kateqoriya əlavə et</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Form -->
+                        <form method="post" action="/AdminPanel/Category/Create" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Kateqoriya Adı</label>
+                                <input class="form-control" name="name" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Kateqoriya şəkli</label>
+                                <input class="form-control" name="image" type="file">
+                            </div>
+                            <div class="mt-4">
+                                <button class="btn btn-primary" type="submit">Add Category</button>
+                                <a href="@Url.Action("Index","Category")" class="btn btn-link">Cancel</a>
+                            </div>
+                        </form>
+                        <!-- Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

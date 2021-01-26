@@ -1,0 +1,111 @@
+﻿@model bilgorsite.ViewModel.VideoVM
+    @using PagedList.Mvc;
+@{
+    ViewBag.Title = "VideoPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <link href="~/Content/PagedLists.css" rel="stylesheet" />
+    <div class="content-area">
+        <div class="page-title">
+            <div class="main-top" style="background-image: url(/Upload/images/videocover.jpg);">
+                <div class="overlay-top-header"></div>
+                <div class="content container">
+                    <h1>
+                        Youtube Videoları
+                    </h1>
+                    <div class="wrap-breadcrumb">
+                        <ul class="breadcrumbs">
+                            <li>
+                                <a href="/">
+                                    Ana Səhifə
+                                </a>
+                            </li>
+                            <li>
+                                <span class="breadcrum-icon">/</span>
+                                Videolar
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <main class="site-main col-12">
+
+                <div class="wrap-main-content">
+
+                    <div class="thim-videos_list-videos-page">
+
+                        <div class="videos-list">
+                            <div class="wrap-element ">
+                                <div class="heading-element">
+                                    
+                                    <div class="wrap-select-filter">
+                                        Year :
+                                        <div class="select-filter">
+                                            <label>
+                                                <select>
+                                                    <option>All</option>
+                                                    <option>2016</option>
+                                                    <option>2017</option>
+                                                    <option>2018</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="wrap-filter-videos js-filter-full-container">
+                                        <a href="javascript:;" style="color:white;" class="toggle-filter">
+                                            Filter
+                                        </a>
+                                        <div class="content-filter">
+                                            <select>
+                                                <option>Sıralamaq üçün seçin</option>
+                                                <option>Ada görə sırala</option>
+                                                <option>Tarixə görə Sırala</option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row isotope-grid mt-5">
+                                    @foreach (var x in Model.videos)
+                                    {
+                                        <div class="col-sm-6 col-md-4 col-lg-3 ">
+                                            <div class="item-post">
+                                                <div class="pic-item">
+                                                    <img width="385" height="250" src="@x.tbl_photo.URL" alt="IMG">
+                                                    <div class="overlay"></div>
+                                                    <div class="meta-info">
+                                                        <div class="imdb">
+                                                            <span class="value">5</span>IMDb
+                                                        </div>
+                                                        <div class="label" style="background: #e40914;">
+                                                            Hot
+                                                        </div>
+                                                    </div>
+                                                    <a href="@x.VideoURL" class="btn-play popup-youtube"></a>
+                                                </div>
+                                                <div class="text-item">
+                                                    <h4 class="title">
+                                                        <a href="single-video.html">
+                                                            How To Make a Pimple Disappear With Makeup
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="loop-pagination mb-5">
+                            @Html.PagedListPager(Model.videos,page =>Url.Action("VideoPage", new { page}))
+                        </ul>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
+        </div>

@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content-area">
+        <div class="page-title">
+            <div class="main-top" style="background-image: url(/Upload/images/elaqe.jpg);">
+                <div class="overlay-top-header"></div>
+                <div class="content container">
+                    <h1>
+                        Əlaqə
+                    </h1>
+                    <div class="wrap-breadcrumb">
+                        <ul class="breadcrumbs">
+                            <li>
+                                <a href="javascript:;">
+                                    Ana səhifə
+                                </a>
+                            </li>
+                            <li>
+                                <span class="breadcrum-icon">/</span>
+                                Əlaqə
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-content layout-1">
+            <main class="site-main">
+                <div class="wrap-main-content">
+
+                    <div class="thim-contact-info_contact-page">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-3">
+
+                                    <div class="bp-element bp-element-icon-box vblog-layout-2 align-center">
+                                        <div class="icon-box">
+                                            <div class="icon-image">
+                                                <i class="ion ion-android-pin"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    Ünvan
+                                                </h3>
+                                                <div class="description">
+                                                    Azərbaycan,Bakı
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+
+                                    <div class="bp-element bp-element-icon-box vblog-layout-2 align-center">
+                                        <div class="icon-box">
+                                            <div class="icon-image">
+                                                <i class="ion ion-android-call"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    Əlaqə
+                                                </h3>
+                                                <div class="description">
+                                                    <a href="javascript:;">(+994) 050-591-98-66</a>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+
+                                    <div class="bp-element bp-element-icon-box vblog-layout-2 align-center">
+                                        <div class="icon-box">
+                                            <div class="icon-image">
+                                                <i class="ion ion-email"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    Email
+                                                </h3>
+                                                <div class="description">
+                                                    <a href="javascript:;"><span class="__cf_email__" >bilinengorunmez@gmail.com</span></a>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-6 col-lg-3">
+
+                                    <div class="bp-element bp-element-icon-box vblog-layout-2 align-center">
+                                        <div class="icon-box">
+                                            <div class="icon-image">
+                                                <i class="ion ion-thumbsup"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    Bizi izlə
+                                                </h3>
+                                                <div class="description">
+                                                    <a href="https://www.instagram.com/bilinengorunmezler/?hl=en">
+                                                        <i class="fab fa-facebook"></i>
+                                                    </a>
+                                                    <a href="https://www.instagram.com/bilinengorunmezler/?hl=en">
+                                                        <i class="fab fa-instagram"></i>
+                                                    </a>
+                                                    <a href="https://www.youtube.com/channel/UC3kbw7-XDin92pYoFTUVl_Q">
+                                                        <i class="fab fa-youtube"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="divline_contact-page"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="thim-send-message_contact-page">
+                        <div class="container">
+
+                            <div class="bp-element bp-element-heading align-center">
+                                <h3 class="title">
+                                    Bİzİmlə Əlaqə Saxla
+                                </h3>
+                                <div class="description">
+                                    Sizin Emailiniz gizli qalacaqdır. Ulduz ilə işarələnənləri doldurun.
+                                </div>
+                            </div>
+
+                            <div class="status pt-3">
+                                @if (TempData["elaqe"] != null)
+                                {
+                                    <div class="alert alert-info">@TempData["elaqe"]</div>
+                                }
+                            </div>
+                            <form method="post" action="/Home/Contact" class="contact-form">
+                                <label class="wrap-input">
+                                    <input type="text" name="ad" placeholder="Adınız*">
+                                </label>
+                                <label class="wrap-input">
+                                    <input type="text" name="email" placeholder="Email*">
+                                </label>
+                                <label class="wrap-input full-width">
+                                    <input type="text" name="baslig" placeholder="Başlıq*">
+                                </label>
+                                <label class="wap-textarea">
+                                    <textarea name="metn" placeholder="Mesajınız*"></textarea>
+                                </label>
+                                <input type="submit" class="form-submit" value="göndər">
+                            </form>
+
+                        </div>
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35206.811735826785!2d-73.97774789142626!3d40.733798330440614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25990e23d7e8d%3A0xfa615edfd1b67e18!2sWashington+Square+Park!5e0!3m2!1svi!2s!4v1538464707133" style="border:0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+

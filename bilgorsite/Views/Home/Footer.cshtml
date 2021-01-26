@@ -1,0 +1,56 @@
+﻿@model bilgorsite.ViewModel.PostVM
+@using bilgorsite.Helper
+<aside class="widget widget_thim_layout_builder">
+
+    <div class="bp-element bp-element-posts vblog-layout-list-footer">
+        <div class="wrap-element">
+            <div class="heading-post">
+                <h3 class="title">
+                    Son Postlar
+                </h3>
+            </div>
+            <div class="list-posts">
+                @foreach (var item in Model.postList)
+                {
+    <div class="item">
+        <div class="pic">
+            <a href="/Posts/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.PostId">
+                <img src="@item.tbl_photo.URL" alt="@item.Title">
+            </a>
+        </div>
+        <div class="text">
+            <h4 class="title">
+                <a href="/Posts/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.PostId">
+                    @item.Title
+                </a>
+            </h4>
+            <div class="date">
+                @item.DateTime.Value.ToShortDateString()
+            </div>
+        </div>
+    </div>}
+            </div>
+        </div>
+    </div>
+
+</aside>
+<aside class="widget widget_thim_layout_builder">
+
+    <div class="bp-element bp-element-categories layout-list-1">
+        <div class="wrap-element">
+            <h3 class="title">
+                Kateqoriyalar
+            </h3>
+            <ul class="list-categories">
+                @foreach (var x in Model.categories)
+                {
+    <li class="cat-item">
+        <a href="javascript:;">@x.Name</a>
+        <span class="count">@x.tbl_post.Count()</span>
+    </li>
+}
+            </ul>
+        </div>
+    </div>
+
+</aside>

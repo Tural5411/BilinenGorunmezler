@@ -1,0 +1,76 @@
+﻿@model bilgorsite.Models.tbl_post
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                @using(Html.BeginForm("Edit","Blog",FormMethod.Post,new { enctype = "multipart/form-data" }))
+                {
+                <div class="card-body">
+                    <div class="service-inner">
+                        <input class="form-control" type="text" name="Title" value="@Model.Title" />
+                        <hr />
+                        <div class="service-cate">
+                            @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="service-amount mb-4">
+                        <span>@Model.Views baxış </span>
+                    </div>
+                    <div class="service-description">
+                        <div class="service-images">
+                            <div class="images-carousel mb-3">
+                                <div class="item">
+                                    <img src="@Model.tbl_photo.URL" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                            <input type="file" value="Şəkili dəyiş" name="image" />
+                            <h5 class="card-title">Service Details</h5>
+                            <div class="form-group">
+                                <textarea name="Context" id="editor">
+                                    @Model.Context
+                            </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="btn btn-warning" type="submit" value="Yadda Saxla" />
+                    <a href="/AdminPanel/Blog/Index" class="btn btn-info">Ləğv et</a>
+                </div>
+                }
+                
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card provider-widget clearfix">
+                <div class="card-body">
+                    <h5 class="card-title">Məqalənin Müəllifi</h5>
+                    <div class="about-author">
+                        <div class="about-provider-img">
+                            <div class="provider-img-wrap">
+                                <a href="javascript:void(0);">
+                                    <img class="img-fluid rounded-circle" alt="" src="~/PublicFront/bilgorico.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="provider-details">
+                            <a href="javascript:void(0);" class="ser-provider-name">@Model.aspnet_Users.UserName</a>
+                            <p class="last-seen"><i class="fas fa-circle online"></i> Müəllifin son giriş tarixi</p>
+                            @*<p class="text-muted mb-1">@Model.aspnet_Users.aspnet_Membership.LastLoginDate.ToShortDateString()</p>*@
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="provider-info">
+                        <p class="mb-1">
+                            @*<i class="far fa-envelope"></i>  <a href="#">@Model.singleMember.aspnet_Users.aspnet_Membership.Email</a>*@
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

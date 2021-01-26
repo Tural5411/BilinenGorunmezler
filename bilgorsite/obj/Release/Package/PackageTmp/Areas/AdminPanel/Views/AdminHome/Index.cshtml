@@ -1,0 +1,207 @@
+﻿@model MembershipUserCollection
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+    var post = ViewBag.posts;
+    var book = ViewBag.books;
+    var user = ViewBag.count;
+    var postCount = ViewBag.postCount;
+    var bookCount = ViewBag.bookCount;
+    var videoCount = ViewBag.videoCount;
+    var video = ViewBag.videos;
+}
+
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="page-title">Xoş gəldin @User.Identity.Name</h3>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="far fa-user"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                <h3>@user</h3>
+                                <h6 class="text-muted">İstifadəçi</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="fas fa-book"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                <h3>@bookCount</h3>
+                                <h6 class="text-muted">Kitab</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="fas fa-qrcode"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                <h3>@postCount</h3>
+                                <h6 class="text-muted">Məqalə</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-primary">
+                                <i class="fab fa-youtube"></i>
+                            </span>
+                            <div class="dash-widget-info">
+                                <h3>@videoCount</h3>
+                                <h6 class="text-muted">Video</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 d-flex">
+
+                <!-- Recent Bookings -->
+                <div class="card card-table flex-fill">
+                    <div class="card-header">
+                        <h4 class="card-title">Son Elave Edilen Postlar</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-center">
+                                <thead>
+                                    <tr>
+                                        <th>Şəkil</th>
+                                        <th>Kateqoriya</th>
+                                        <th>Başlıq</th>
+                                        <th>Müəllif</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in post)
+                                    {
+                                        <tr>
+                                            <td class="text-nowrap">
+                                                <img class="avatar-xs rounded-circle" src="@x.tbl_photo.URL">
+                                            </td>
+                                            <td class="text-nowrap">@x.tbl_category.Name</td>
+                                            <td>@x.Title</td>
+                                            <td>
+                                                <span class="badge bg-danger inv-badge">@x.aspnet_Users.UserName</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Recent Bookings -->
+
+            </div>
+            <div class="col-md-6 d-flex">
+
+                <!-- Payments -->
+                <div class="card card-table flex-fill">
+                    <div class="card-header">
+                        <h4 class="card-title">Son Elave Edilen Kitablar</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-center">
+                                <thead>
+                                    <tr>
+                                        <th>Şəkili</th>
+                                        <th>Yazıçı</th>
+                                        <th>Kitab</th>
+                                        <th>Səhifə</th>
+                                        <th>Kateqoriya</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var b in ViewBag.books)
+                                    {
+                                        <tr>
+                                            <td class="text-nowrap">
+                                                <img class="avatar-xs rounded-circle" src="@b.tbl_photo.URL">
+                                            </td>
+                                            <td class="text-nowrap">@b.tbl_Writer.FullName</td>
+                                            <td>@b.Name</td>
+                                            <td>
+                                                <span class="badge bg-success inv-badge">@b.Page</span>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Payments -->
+
+            </div>
+            <div class="col-md-6 d-flex">
+
+                <!-- Recent Bookings -->
+                <div class="card card-table flex-fill">
+                    <div class="card-header">
+                        <h4 class="card-title">Son Elave Edilen Videolar</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-center">
+                                <thead>
+                                    <tr>
+                                        <th>Şəkil</th>
+                                        <th>Başlıq</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in video)
+                                    {
+                                        <tr>
+                                            <td class="text-nowrap">
+                                                <img width="80" src="@x.tbl_photo.URL">
+                                            </td>
+                                            <td>@x.Title</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Recent Bookings -->
+
+            </div>
+        </div>
+    </div>
+

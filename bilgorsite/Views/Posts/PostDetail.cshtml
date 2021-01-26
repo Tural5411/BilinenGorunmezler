@@ -1,0 +1,186 @@
+﻿@model bilgorsite.ViewModel.PostVM
+    @using bilgorsite.Helper
+@{
+    ViewBag.Title = "PostDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60087cdec03e54001829c889&product=sticky-share-buttons" async="async"></script>
+        <div class="content-area">
+            <div class="page-title">
+                <div class="sharethis-inline-share-buttons"></div>
+                <div class="main-top" style="background-image: url(/Upload/images/meqale.jpg);">
+                    <div class="overlay-top-header"></div>
+                    <div class="content container">
+                        <h1>
+                            Post
+                        </h1>
+                        <div class="wrap-breadcrumb">
+                            <ul class="breadcrumbs">
+                                <li>
+                                    <a href="/">
+                                        Ana Səhifə
+                                    </a>
+                                </li>
+                                <li>
+                                    <span class="breadcrum-icon">/</span>
+                                    Post
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="site-content sidebar-right layout-1">
+                <div class="container">
+                    <div class="row">
+                        <main class="site-main col-lg-9">
+                            <div class="wrap-main-content">
+
+                                <div class="bl-blog-detail">
+                                    <div class="head-blog">
+                                        <h2 class="title-blog-detail">
+                                            @Model.postSingle.Title
+                                        </h2>
+                                        <div class="info-blog-detail">
+                                            <span class="info-item">
+                                                <i class="ion ion-android-person"></i>
+                                                By <a href="/Posts/Postlar/@Model.postSingle.aspnet_Users.UserId">@Model.postSingle.aspnet_Users.UserName</a>
+                                            </span>
+                                            <span class="info-item">
+                                                <i class="ion ion-ios-pricetags-outline"></i>
+                                                <a href="javascript:;">@Model.postSingle.tbl_category.Name</a>
+                                            </span>
+                                            <span class="info-item">
+                                                <i class="ion ion-android-chat"></i>
+                                                <a href="/Posts/@SeoHelper.ToSeoUrl(Model.postSingle.Title).ToLower()-@Model.postSingle.PostId#disqus_thread"></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="media-blog-detail">
+                                        <div class="pic">
+                                            <img src="@Model.postSingle.tbl_photo.URL" alt="@Model.postSingle.Title">
+                                        </div>
+                                        <div class="date">
+                                            <span class="number"></span>@Model.postSingle.DateTime.Value.ToShortDateString()
+                                        </div>
+                                    </div>
+                                    <div class="text-blog-detail">
+                                        <div style="text-align:justify" class="content-blog">
+                                            <p>@Html.Raw(Model.postSingle.Context)</p>
+
+
+                                            <div class="tags mt-4">
+                                                <span class="name-field">Etiket:</span>
+                                                <a href="javascript:;" class="tag-item">bilinən görünməzlər</a>
+                                                <a href="javascript:;" class="tag-item">bilgör</a>
+                                            </div>
+                                            <div class="sharethis-inline-reaction-buttons"></div>
+
+
+                                            <div class="author-blog">
+                                                <div class="pic-author">
+                                                    <div class="ava-author">
+                                                        <a href="javascript:;"><img width="70" height="70" src="~/PublicFront/bilgorico.png" alt="IMG"></a>
+                                                    </div>
+                                                </div>
+                                                <div class="text-author">
+                                                    <div class="name-author mt-4">
+                                                        Bilinən görünməzlər komandasından :
+                                                        <a href="javascript:;">
+                                                            @Model.postSingle.aspnet_Users.UserName
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="comments-area">
+                                                <div class="form-comment">
+                                                    <div id="disqus_thread"></div>
+                                                    <script>
+                                                        (function () { // DON'T EDIT BELOW THIS LINE
+                                                            var d = document, s = d.createElement('script');
+                                                            s.src = 'https://bilgor.disqus.com/embed.js';
+                                                            s.setAttribute('data-timestamp', +new Date());
+                                                            (d.head || d.body).appendChild(s);
+                                                        })();
+                                                    </script>
+                                                </div>
+                                            </div>
+
+                                           
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                @{
+                                    Html.RenderAction("RelatedCategory", "Posts");
+                                }
+
+                            </div>
+                        </main>
+                    <div class="widget-area col-sm-9 col-md-8 col-lg-3 sticky-sidebar">
+                        <aside class="widget widget_search">
+                            <form class="search-form" action="@Url.Action("BookPage","Books",new { })">
+                                <label>
+                                    <span class="screen-reader-text">Search for:</span>
+                                    <input type="hidden" name="sortBy" value="@Model.sortBy" />
+                                    <input class="search-field" name="searchTerm" type="text" placeholder="Axtardığınız postu yazın ?">
+                                </label>
+                                <input class="search-submit" type="submit" value="Search">
+                            </form>
+                        </aside>
+                        <aside class="widget widget_product_categories">
+                            <h3 class="widget-title">
+                                Post Kateqorİyaları
+                            </h3>
+                            <select onchange="location=this.value" class="form-control">
+                                <option>Kateqoriya Seçin</option>
+                                @foreach (var x in Model.categories)
+                                {
+
+                                    <option class="form-control"
+                                            value="@Url.Action("PostPage","Posts",new { id=x.CategoryId,sortBy=Model.sortBy})">
+                                        @x.Name
+                                    </option>
+                                }
+                            </select>
+                        </aside>
+                        @{
+                            Html.RenderAction("PopularPost", "Books");
+                        }
+
+                        <aside class="widget widget_tag_cloud">
+                            <h3 class="widget-title">
+                                Etİketlər
+                            </h3>
+                            <div class="tagcloud">
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Bilgör
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Bilinən Görünməzlər
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Psixalogiya
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Mistika
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Metafizika
+                                </a>
+                            </div>
+                        </aside>
+                        <aside class="widget widget_text">
+                            <div class="textwidget">
+                                <a href="javascript:;">
+                                    <img src="~/PublicFront/assets/images/ads-04.jpg" alt="IMG">
+                                </a>
+                            </div>
+                        </aside>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

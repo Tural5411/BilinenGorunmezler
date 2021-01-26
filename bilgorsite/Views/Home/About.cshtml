@@ -1,0 +1,225 @@
+﻿@model bilgorsite.ViewModel.PostVM
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content-area">
+        <div class="page-title">
+            <div class="main-top" style="background-image: url(/Upload/images/about.jpg);">
+                <div class="overlay-top-header"></div>
+                <div class="content container">
+                    <h1>
+                        Haqqımızda
+                    </h1>
+                    <div class="wrap-breadcrumb">
+                        <ul class="breadcrumbs">
+                            <li>
+                                <a href="javascript:;">
+                                   Ana Səhifə
+                                </a>
+                            </li>
+                            <li>
+                                <span class="breadcrum-icon">/</span>
+                                Haqqımızda
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-content layout-1">
+            <main class="site-main">
+                <div class="wrap-main-content">
+
+                    <div class="thim-about_about-page">
+                        <div class="container">
+
+                            <div class="bp-element bp-element-heading align-center">
+                                <h3 class="title">
+                                    Biz Kimik ?
+                                </h3>
+                                <div class="content">
+                                    Biz sizlər üçün <strong>elm</strong>, <strong>tarix</strong>, <strong>psixologiya</strong>, <strong>parapsixologiya</strong>, <strong>incəsənət</strong>
+                                    ,<strong>texnologiya</strong> , <strong>metafizika</strong> ,<strong>mistika</strong>  və bunlara bənzər, sizi sadəcə inkişaf etdirəbiləcək maraqlı və keyfiyyətli
+                                    kontentlər ilə Azərbaycanda intellektual kütlənin yaradılması üçün əlimizdən gələni edirik. 2015-ci ildə qurulmuş olan
+                                    <strong>Bilinən Görünməzlər</strong> bu zamana qədər 30.000.000-dan çox izlənmə sayı və 200.000-ə yaxın
+                                    izləyici kütləsi ilə Azərbaycanın ən böyük maarifləndirici cəmiyyəti olmuşdur.
+                                    Lakin 2 illik fasilədən sonra 2019-cu ildə yenidən fəaliyyətə başladı.
+                                    Daha öncə istifadə edilən 90.000-lik <strong>Bilinən Görünməzlər</strong> kanalı istifadə olunmur.
+                                    <strong>Taleh Məmmədov</strong>  yenidən <strong>Bilinən Görünməzlər</strong> adında yeni kanalı qurdu. 
+                                    Lakin burada tək deyil, öz professional komandası ilə birlikdədir.
+                                </div>
+                            </div>
+                            <div class="bp-element bp-element-heading align-center">
+                                <h3 class="title">
+                                    Hədəfimiz
+                                </h3>
+                                <div class="content">
+                                    Bizim hədəfimiz bütün Azərbycan xalqına faydalı olub, ölkəmizə, onun vətəndaşlarına elmi olaraq kömək olmaqdır. Azərbaycanın <strong>tarixini</strong> ,<strong>incəsənətini</strong>  və bu zamana qədər qazanmış uğurlarını ölkə xaricinə çıxardaraq, Azərbaycanı təmsil etməkdir. Gənc soydaşlarımıza bildirmək istəyirik ki, biz daima onlarlayıq.
+                                </div>
+                            </div>
+
+
+                            <div class="bp-element bp-element-counter-box align-center vblog-layout-1 show-line">
+                                <div class="item">
+                                    <span class="number">
+                                        @Model.books.Count
+                                    </span>
+                                    <span class="text">
+                                        Kitablar
+                                    </span>
+                                </div>
+                                <div class="item">
+                                    <span class="number">
+                                        @Model.postList.Count
+                                    </span>
+                                    <span class="text">
+                                        Bloglar
+                                    </span>
+                                </div>
+                                <div class="item">
+                                    <span class="number">
+                                        @Model.videos.Count
+                                    </span>
+                                    <span class="text">
+                                        Videolar
+                                    </span>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="thim-services_about-page">
+                        <div class="container">
+                            <div class="bp-element bp-element-heading align-center">
+                                <h3 class="title">
+                                    XİdmətlərİMİz
+                                </h3>
+                                <div class="description">
+                                    Bilgör cəmiyyətinə qoşulmaq üçün, özünüz haqqında qısa məlumatı (məsələn: yaş, bacarıq, elmə olan marağınız, və bizə niyə qoşulmaq istədiyinizi) aşağıda yer alan əlaqə bölməsi ilə bizə göndərin.
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <div class="bp-element bp-element-icon-box align-center vblog-layout-1">
+                                        <div class="icon-box">
+                                            <div class="icon-image">
+                                                <i style="font-size:50px;color:#ffcc00;" class="fas fa-book-reader"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    Online Kitabxana
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="bp-element bp-element-icon-box align-center vblog-layout-1">
+                                        <div class="icon-box">
+                                            <div class="icon-image">
+                                                <i style="font-size:50px;color:#ffcc00;" class="fas fa-atom"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    Elmi Bloglar
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="bp-element bp-element-icon-box align-center vblog-layout-1">
+                                        <div class="icon-box">
+                                            <div class="icon-image">
+                                                <i style="font-size:50px;color:#ffcc00;" class="fab fa-youtube"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    Maarifləndirici Videolar
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="thim-team_about-page">
+                        <div class="container">
+
+                            <div class="bp-element bp-element-heading align-center">
+                                <h3 class="title">
+                                    Komandamız
+                                </h3>
+                                <div class="description">
+                                    
+                                </div>
+                            </div>
+
+
+                            <div class="bp-element bp-element-our-team layout-5">
+                                <div class="wrap-element">
+                                    <div class="row">
+                                        @foreach (var x in Model.users)
+	{
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="author-item">
+                                                <div class="pic-author">
+                                                    <img width="270" height="350" src="@x.tbl_photo.URL" alt="IMG">
+                                                    <a href="/Posts/Postlar/@x.UserId" class="overlay-author"></a>
+                                                </div>
+                                                <div class="text-author">
+                                                    <h4 class="name-author">
+                                                        <a href="/Posts/Postlar/@x.UserId">
+                                                           @x.UserName
+                                                        </a>
+                                                    </h4>
+                                                    <div class="info-author">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+	}
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="author-item">
+                                            <div class="pic-author">
+                                                <img width="270" height="350" src="/PublicFront/assets/images/team-04.jpg" alt="IMG">
+                                                <a href="single-author.html" class="overlay-author"></a>
+                                            </div>
+                                            <div class="text-author">
+                                                <h4 class="name-author">
+                                                    <a href="single-author.html">
+                                                        Cynthia 
+                                                    </a>
+                                                </h4>
+                                                <div class="info-author">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+

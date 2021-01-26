@@ -1,0 +1,68 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col">
+                <h3 class="page-title">İstifadəçilərə Rol Əlavə Etmək</h3>
+            </div>
+            <div class="col-auto text-right">
+                <a href="/AdminPanel/AdminRole/AddRole" class="btn btn-primary add-button">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table custom-table mb-0 datatable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Rol Adı</th>
+                                    <th>Aktiv</th>
+                                    <th class="text-right">Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int num = 1;
+                                }
+                                @foreach (string x in Model)
+                                {
+                                    <tr>
+                                        <td>@num</td>
+                                        <td>@x</td>
+                                        <td>
+                                            <div class="status-toggle">
+                                                <input id="rating_1" class="check" type="checkbox" checked>
+                                                <label for="rating_1" class="checktoggle">checkbox</label>
+                                            </div>
+                                        </td>
+                                        <td class="text-right">
+                                            <a href="edit-ratingstype.html" class="table-action-btn btn btn-sm bg-danger">
+                                                <i class="far glyphicon-remove mr-1"></i> Sil
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    num++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

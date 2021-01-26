@@ -1,0 +1,15 @@
+﻿@using bilgorsite.Utilities;
+@model bilgorsite.ViewModel.PostVM
+<form method="post" action="/Home/Search" class="search-form">
+    <label class="wrap-select2" data-style="vblog-search">
+        <select onchange="location=this.value">
+            <option value="@Url.Action("Search","Home",new {searchTerm=Model.searchTerm,sortBy=(int)SearchEnum.Books})">Kitab</option>
+            <option value="@Url.Action("Search","Home",new {searchTerm=Model.searchTerm,sortBy=(int)SearchEnum.Videos})">Video</option>
+            <option value="@Url.Action("Search","Home",new {searchTerm=Model.searchTerm,sortBy=(int)SearchEnum.Posts})">Post</option>
+        </select>
+    </label>
+    <input type="search" class="search-field" name="search" placeholder="Axtar ..." />
+    <button class="btn-search">
+        <i class="ion ion-android-search"></i>
+    </button>
+</form>

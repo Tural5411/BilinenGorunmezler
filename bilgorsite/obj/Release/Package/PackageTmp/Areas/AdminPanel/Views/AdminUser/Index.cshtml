@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+@using System.Web.Security
+@model MembershipUserCollection
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+    var error = ViewBag.message;
+}
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col">
+                <h3 class="page-title">İstifadəçilər</h3>
+            </div>
+            <div class="col-auto text-right">
+                <a class="btn btn-white filter-btn" href="javascript:void(0);" id="filter_search">
+                    <i class="fas fa-user-plus"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+    <!-- Search Filter -->
+
+    @{ Html.RenderAction("NewUser", "AdminUser");}
+
+    <!-- /Search Filter -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0 datatable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Login</th>
+                                    <th>Email</th>
+                                    <th>Qeydiyyat</th>
+                                    <th>Son Giriş</th>
+                                    <th>Rol</th>
+                                    <th>Rol Əlavə</th>
+                                    <th>Sil</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int num = 1;
+                                }
+                                @foreach(MembershipUser user in Model)
+                                {
+                                    <tr>
+                                        <td>@num</td>
+                                        <td>
+                                            <h2 class="table-avatar">
+                                                <a href="#" class="avatar avatar-sm mr-2">
+                                                    <img class="avatar-img rounded-circle" src="~/Areas/AdminPanel/AdminFront/assets/img/customer/user-01.jpg" alt="User Image">
+                                                </a>
+                                                <a href="#">@user.UserName</a>
+                                            </h2>
+                                        </td>
+                                        <td>@user.Email</td>
+                                        <td>@user.CreationDate.ToShortDateString()</td>
+                                        <td>@user.LastLoginDate.ToShortDateString()</td>
+                                        <td><a class="btn btn-primary rolleri" href="" data-username="@user.UserName">Rollari</a></td>
+                                        <td><a class="btn btn-primary" href="/AdminPanel/AdminUser/AddUserRole/@user.UserName">Rol elave et</a></td>
+                                        <td><a class="btn btn-danger userDelete" name="@user.UserName" href="/AdminPanel/AdminUser/DeleteUser/@user.UserName">Istidaceni Sil</a></td>
+                                    </tr>
+                                    num++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(".rolleri").click(function () {
+            var ua = $(this).data("username");
+            $.ajax({
+                type: "POST",
+                url: "/AdminPanel/AdminUser/UserRoles/",
+                data: { UserName: ua },
+                success: function (e) {
+                    alert(e).UserName
+                }
+            })
+        })
+    </script> }
+

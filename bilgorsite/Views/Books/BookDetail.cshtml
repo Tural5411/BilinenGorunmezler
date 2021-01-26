@@ -1,0 +1,170 @@
+﻿@model bilgorsite.ViewModel.KitabVM
+@{
+    ViewBag.Title = "BookDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-area" style="transform: none;">
+    <div class="page-title">
+        <div class="main-top" style="background-image: url(/Upload/images/kitab.jpg);">
+            <div class="overlay-top-header"></div>
+            <div class="content container">
+                <h1>
+                    Kitab
+                </h1>
+                <div class="wrap-breadcrumb">
+                    <ul class="breadcrumbs">
+                        <li>
+                            <a href="javascript:;">
+                                Ana Səhifə
+                            </a>
+                        </li>
+                        <li>
+                            <span class="breadcrum-icon">/</span>
+                            Kitab
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-content sidebar-right layout-1" style="transform: none;">
+        <div class="container" style="transform: none;">
+            <div class="row" style="transform: none;">
+                <main class="site-main col-lg-9">
+                    <div class="wrap-main-content">
+                        <div class="product">
+                            <div class="bl-product-detail">
+
+                                <div class="media-product">
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="">
+                                                <div class="" style="opacity: 1; width: 1110px;">
+                                                    <div class="item-img">
+                                                        <img width="320" height="400" src="@Model.bookSingle.tbl_photo.URL" alt="@Model.bookSingle.Name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 ml-4">
+                                            <div class="text-product">
+                                                <h4 style="" class="name-product text-uppercase">
+                                                    @Model.bookSingle.Name
+                                                </h4>
+                                                <div class="star-product mt-3">
+                                                    <span class="iconstars">
+                                                        <i class="ion ion-android-star"></i>
+                                                        <i class="ion ion-android-star"></i>
+                                                        <i class="ion ion-android-star"></i>
+                                                        <i class="ion ion-android-star"></i>
+                                                        <i class="ion ion-android-star"></i>
+                                                        <i class="ion ion-android-star"></i>
+                                                        <i class="ion ion-android-star"></i>
+                                                        <i class="ion ion-android-star-outline"></i>
+                                                        <i class="ion ion-android-star-outline"></i>
+                                                        <i class="ion ion-android-star-outline"></i>
+                                                    </span>
+                                                    7/10
+                                                </div>
+                                                <div class="description-product mt-3">
+                                                    @Model.bookSingle.Context
+                                                </div>
+
+                                                <a style="font-weight:700" name="@Model.bookSingle.Name" href="@Url.Action("DownloadFile","Books",new {id =Model.bookSingle.BookId })" class="btn-addcart btn-normal shape-round">
+                                                    Kitab Yüklə <i style="font-size:24px;font-weight:800;color:darkorange" class="fas fa-download ml-1"></i>
+                                                </a>
+                                                <div class="categories">
+                                                    <span style="font-weight:600">Kateqoriya : </span><a href="/Books/Kitablar/@Model.bookSingle.BookCategoryId" style="font-weight:800" class="cat-item">@Model.bookSingle.tbl_bookCategory.Name</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comments-area">
+                                    <div class="form-comment">
+                                        <div id="disqus_thread"></div>
+                                        <script>
+                                            (function () { // DON'T EDIT BELOW THIS LINE
+                                                var d = document, s = d.createElement('script');
+                                                s.src = 'https://bilgor.disqus.com/embed.js';
+                                                s.setAttribute('data-timestamp', +new Date());
+                                                (d.head || d.body).appendChild(s);
+                                            })();
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        @{ 
+                            Html.RenderAction("RelatedCategory", "Books");
+                        }
+                    </div>
+                        </div>
+                </main>
+                <div class="widget-area col-sm-9 col-md-8 col-lg-3 sticky-sidebar">
+                    <aside class="widget widget_search">
+                        <form class="search-form" action="@Url.Action("BookPage","Books",new { })">
+                            <label>
+                                <span class="screen-reader-text">Search for:</span>
+                                <input type="hidden" name="sortBy" value="@Model.sortBy" />
+                                <input class="search-field" name="searchTerm" type="text" placeholder="Axtardığınız kitabı yazın ?">
+                            </label>
+                            <input class="search-submit" type="submit" value="Search">
+                        </form>
+                    </aside>
+                    <aside class="widget widget_product_categories">
+                        <h3 class="widget-title">
+                            Kİtab Kateqorİyaları
+                        </h3>
+                        <select onchange="location=this.value" class="form-control">
+                            <option disabled>Kateqoriya Seçin</option>
+                            @foreach (var x in Model.categories)
+                            {
+
+                                <option class="form-control"
+                                        value="@Url.Action("BookPage","Books",new { id=x.BookCategoryId,sortBy=Model.sortBy})">
+                                    @x.Name
+                                </option>
+                            }
+                        </select>
+                    </aside>
+                    @{
+                        Html.RenderAction("PopularPost", "Books");
+                    }
+
+                    <aside class="widget widget_tag_cloud">
+                        <h3 class="widget-title">
+                            Etİketlər
+                        </h3>
+                        <div class="tagcloud">
+                            <a href="javascript:;" class="tag-cloud-link">
+                                Bilgör
+                            </a>
+                            <a href="javascript:;" class="tag-cloud-link">
+                                Bilinən Görünməzlər
+                            </a>
+                            <a href="javascript:;" class="tag-cloud-link">
+                                Psixalogiya
+                            </a>
+                            <a href="javascript:;" class="tag-cloud-link">
+                                Mistika
+                            </a>
+                            <a href="javascript:;" class="tag-cloud-link">
+                                Metafizika
+                            </a>
+                        </div>
+                    </aside>
+                    <aside class="widget widget_text">
+                        <div class="textwidget">
+                            <a href="javascript:;">
+                                <img src="~/PublicFront/assets/images/ads-04.jpg" alt="IMG">
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

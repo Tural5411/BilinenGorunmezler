@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from truelysell-html.dreamguystech.com/template/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 25 Dec 2020 16:50:53 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Truelysell | Template</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="~/Areas/AdminPanel/AdminFront/assets/img/favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Areas/AdminPanel/AdminFront/assets/plugins/bootstrap/css/bootstrap.min.css">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="~/Areas/AdminPanel/AdminFront/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/Areas/AdminPanel/AdminFront/assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="~/Areas/AdminPanel/AdminFront/assets/css/animate.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/Areas/AdminPanel/AdminFront/assets/css/admin.css">
+
+    @*<script src="~/Areas/AdminPanel/Scripts/ckeditor5 (1)/build/ckeditor.js"></script>*@
+    <script src="~/Areas/AdminPanel/Scripts/ckeditor/ckeditor.js"></script>
+
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo logo-small">
+                    <img src="~/Areas/AdminPanel/AdminFront/assets/img/logo-icon.png" alt="Logo" width="30" height="30">
+                </a>
+            </div>
+            <a href="javascript:void(0);" id="toggle_btn">
+                <i class="fas fa-align-left"></i>
+            </a>
+            <a class="mobile_btn" id="mobile_btn" href="javascript:void(0);">
+                <i class="fas fa-align-left"></i>
+            </a>
+
+            <ul class="nav user-menu">
+                <!-- Notifications -->
+                <li class="nav-item dropdown noti-dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <i class="far fa-bell"></i>  <span class="badge badge-pill"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right notifications">
+                        <div class="topnav-dropdown-header">
+                            <span class="notification-title">Notifications</span>
+                            <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+                        </div>
+                        <div class="noti-content">
+                            <ul class="notification-list">
+                                <li class="notification-message">
+                                    <a href="admin-notification.html">
+                                        <div class="media">
+                                            <span class="avatar avatar-sm">
+                                                <img class="avatar-img rounded-circle" alt="" src="~/PublicFront/bilgorico.png">
+                                            </span>
+                                            <div class="media-body">
+                                                <p class="noti-details">
+                                                    <span class="noti-title">Thomas Herzberg have been subscribed</span>
+                                                </p>
+                                                <p class="noti-time">
+                                                    <span class="notification-time">15 Sep 2020 10:20 PM</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="admin-notification.html">View all Notifications</a>
+                        </div>
+                    </div>
+                </li>
+                <!-- /Notifications -->
+                <!-- User Menu -->
+                <li class="nav-item dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle user-link  nav-link" data-toggle="dropdown">
+                        <span class="user-img">
+                            <img class="rounded-circle" src="~/PublicFront/bilgorico.png" width="40" alt="Admin">
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="admin-profile.html">Profil</a>
+                        <a class="dropdown-item" href="/LoginSR/Logout">Çıxış</a>
+                    </div>
+                </li>
+                <!-- /User Menu -->
+
+            </ul>
+        </div>
+        <!-- /Header -->
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                <a href="index.html">
+                    <img src="~/PublicFront/bilgorico.png" class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+
+                        <li class="active">
+                            <a href="@Url.Action("Index","AdminHome")"><i class="fas fa-columns"></i> <span>Ana Səhifə</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Category")"><i class="fas fa-layer-group"></i> <span>Kateqoriyalar</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Book")"><i class="fas fa-book"></i> <span> Kitablar</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Blog")"><i class="fas fa-paste"></i> <span> Postlar</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Video")"><i class="fab fa-youtube"></i> <span> Videolar</span></a>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>
+                                <a href="/AdminPanel/AdminUser/Index"><i class="fas fa-user"></i> <span>İstifadəçilər</span></a>
+                            </li>
+                            <li>
+                                <a href="/AdminPanel/AdminRole/Index"><i class="fas fa-user-tie"></i> <span> Rollar</span></a>
+                            </li>
+                        }
+                        <li>
+                            <a href="@Url.Action("ResetPassword","AdminUser")"><i class="fas fa-cog"></i> <span> Parametrlər</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Sidebar -->
+        <div class="page-wrapper">
+            @RenderBody()
+        </div>
+    </div>
+    @RenderSection("scripts", false)
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
+@*<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            toolbar: {
+                items: [
+                    'exportPdf',
+                    'CKFinder',
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'alignment',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'indent',
+                    'outdent',
+                    '|',
+                    'fontBackgroundColor',
+                    'imageUpload',
+                    'blockQuote',
+                    'imageInsert',
+                    'insertTable',
+                    'mediaEmbed',
+                    'undo',
+                    'redo',
+                    '|',
+                    'fontColor',
+                    'highlight',
+                    'fontFamily',
+                    'fontSize',
+                    'todoList',
+                    'specialCharacters',
+                    '|'
+                ]
+            },
+            language: 'az',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:full',
+                    'imageStyle:side',
+                    'linkImage'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells',
+                    'tableCellProperties',
+                    'tableProperties'
+                ]
+            },
+            licenseKey: '',
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            console.warn('Build id: 9cbi8ia37ag3-ps874s4fm602');
+            console.error(error);
+        });
+</script>*@
+    <!-- jQuery -->
+    <script src="~/Areas/AdminPanel/AdminFront/assets/js/jquery-3.5.0.min.js"></script>
+    <!-- Bootstrap Core JS -->
+    <script src="~/Areas/AdminPanel/AdminFront/assets/js/popper.min.js"></script>
+    <script src="~/Areas/AdminPanel/AdminFront/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slimscroll JS -->
+    <script src="~/Areas/AdminPanel/AdminFront/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Custom JS -->
+    <script src="~/Areas/AdminPanel/AdminFront/assets/js/admin.js"></script>
+</body>
+</html>

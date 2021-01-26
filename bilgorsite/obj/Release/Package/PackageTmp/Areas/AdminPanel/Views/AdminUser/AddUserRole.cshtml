@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "AddUserRole";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="page-title">Rol Əlavə Etmək</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Form -->
+                    <form method="post" action="/AdminPanel/AdminUser/AddUserRole">
+                        <div class="form-group">
+                            <label class="text-warning">İstifadəçi seç</label>
+                            <select class="form-control" name="UserName">
+                                @foreach (MembershipUser user in ViewBag.UserList)
+                                {
+                                    <option value="@user">@user.UserName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-warning">İstifadəçiyə Rol Seç</label>
+                            <select class="form-control" name="RolName">
+                                @foreach (string rol in ViewBag.RoleList)
+                                {
+                                    <option value="@rol">@rol</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary" type="submit">Əlavə Et</button>
+                        </div>
+                    </form>
+                    <!-- /Form -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

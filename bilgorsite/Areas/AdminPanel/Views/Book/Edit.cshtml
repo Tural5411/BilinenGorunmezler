@@ -1,0 +1,73 @@
+﻿@model bilgorsite.Models.tbl_book
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2">
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="page-title">Kitab Yüklə</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Form -->
+                        @using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-group">
+                                <label>Kitabın Adı</label>
+                                <input class="form-control" name="Name" value="@Model.Name" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Kitabın Səhifə Sayı</label>
+                                <input class="form-control" name="Page" value="@Model.Page" type="text">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Kitab haqqında qısa məlumat</label>
+                                <textarea name="Context" id="editor"> @Model.Context
+                            </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-author">Kitabın Yazıçısı</label>
+                                <label class="btn btn-danger">@Model.tbl_Writer.FullName</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Kitabın Yazıçısın Seç</label>
+                                @*@Html.DropDownListFor(m => m.WriterId, (List<SelectListItem>)ViewBag.dyr, new { @class = "form-control" })*@
+                                @Html.DropDownList("WriterId", null, htmlAttributes: new { @name = "writerId" })
+                            </div>
+                            <div class="form-group">
+                                <label>Kitabın indiki şəkli</label>
+                                <img width="220" height="340" src="@Model.tbl_photo.URL" />
+                            </div>
+                            <div class="form-group">
+                                <label>Kitabın Yeni şəkli</label>
+                                <input class="form-control btn btn-warning" name="image" type="file">
+                            </div>
+                            <div class="form-group">
+                                <label>Kitabın PDFi</label>
+                                <input class="form-control" name="pdf" type="file">
+                            </div>
+                            <div class="mt-4">
+                                <button class="btn btn-primary" type="submit">Yadda Saxla</button>
+                                <a href="@Url.Action("Index", "Book")" class="btn btn-link">Ləğv Et</a>
+                            </div>
+                        }
+                        <!-- Form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

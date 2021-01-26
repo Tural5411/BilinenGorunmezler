@@ -1,0 +1,40 @@
+﻿@model bilgorsite.ViewModel.VideoVM
+<div class="bp-element bp-element-st-list-videos vblog-layout-1">
+    <div class="wrap-element">
+        <div class="feature-item">
+            <div class="row">
+                @foreach (var x in Model.videoList)
+                {
+                    <div class="col-lg-9">
+                        <div class="video">
+                            <img src="@x.tbl_photo.URL" alt="@x.Title">
+                            <div class="overlay"></div>
+                            <div class="meta-info">
+                                <div class="imdb">
+                                </div>
+                                <div class="label">
+                                    Yeni
+                                </div>
+                            </div>
+                            <a href="@x.VideoURL" class="btn-play popup-youtube">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="text">
+                            <h4 class="title">
+                                <a href="@x.VideoURL">
+                                    @x.Title
+                                </a>
+                            </h4>
+                            <a href="https://www.youtube.com/channel/UC3kbw7-XDin92pYoFTUVl_Q" class="btn-readmore btn-normal shape-round">
+                                Etrafli
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

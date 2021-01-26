@@ -1,0 +1,58 @@
+﻿@model bilgorsite.Models.tbl_post
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="content container-fluid">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="page-title">Məqalə yaz</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Header -->
+
+            <div class="card">
+                <div class="card-body">
+                    <!-- Form -->
+                    <form method="post" action="/AdminPanel/Blog/Create" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Başlıq</label>
+                            <input class="form-control" name="Title" type="text">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="context" id="editor">
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Kategoriya seç</label>
+                            @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>şəkli</label>
+                            <input class="form-control" name="image" type="file">
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary" type="submit">eLAVE et</button>
+                            <a href="@Url.Action("Index","Blog")" class="btn btn-link">Cancel</a>
+                        </div>
+                    </form>
+                    <!-- Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

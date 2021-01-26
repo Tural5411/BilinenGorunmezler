@@ -1,0 +1,55 @@
+﻿@model bilgorsite.Models.tbl_video
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2">
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="page-title">Edit Video</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Form -->
+                        @using (Html.BeginForm("Edit", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                <label>Video Adı</label>
+                                <input class="form-control" name="name" type="text" value="@Model.Title">
+                            </div>
+                            <div class="form-group">
+                                <label>Video Linki</label>
+                                <input class="form-control" name="name" type="text" value="@Model.VideoURL">
+                            </div>
+                            <div class="form-group">
+                                <label>Video Şəkli</label>
+                                <input class="form-control" name="image" type="file">
+                            </div>
+                            <div class="form-group">
+                                <label>Hal hazırdakı şəkil </label><br />
+                                <img width="350" height="200" class="img-responsive" alt="" src="@Model.tbl_photo.URL">
+                            </div>
+                            <div class="mt-4">
+                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                <a href="@Url.Action("Index","Video")" class="btn btn-link">Cancel</a>
+                            </div>
+                        }
+
+                        <!-- /Form -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

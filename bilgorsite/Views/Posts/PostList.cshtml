@@ -1,0 +1,108 @@
+﻿@model bilgorsite.ViewModel.PostVM
+@using bilgorsite.Helper
+@{ 
+    var last = ViewBag.last;
+}
+<div class="bp-element bp-element-st-list-videos vblog-layout-grid-1">
+    <div class="wrap-element">
+        <div class="heading-post">
+            <div class="wrap-title">
+                <h3 class="title">
+                    Məqalələr
+                </h3>
+                <a href="@Url.Action("PostPage","Posts")" class="link">
+                    Hamısına bax
+                </a>
+            </div>
+            <div class="categories">
+                <ul>
+                    <li class="current-cat">
+                        <a href="javascript:;">
+                            Fəlsəfə
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Elm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Psixalogiya
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Tarix
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Kosmos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Təbiət
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-posts grid-isotope">
+            <div class="grid-sizer"></div>
+            <div class="grid-item size_2x2">
+                <div class="post-item feature-item">
+                    <a href="/Posts/@SeoHelper.ToSeoUrl(last.Title).ToLower()-@last.PostId"><img width="200" height="607" src="@last.tbl_photo.URL" alt="@last.Title"></a>
+                    <div class="overlay"></div>
+                    <div class="meta-info">
+                        <div class="imdb">
+                            <span class="value">@last.Views</span><i class="far fa-eye"></i>
+                        </div>
+                        <div class="label" style="background: #ff6c00;">
+                            @last.tbl_category.Name
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">
+                            <a href="/Posts/@SeoHelper.ToSeoUrl(last.Title).ToLower()-@last.PostId">
+                                @last.Title
+                            </a>
+                        </h4>
+                        <div class="info">
+                            <span>YENI</span>
+                            <span>@last.DateTime</span>
+                        </div>
+                        <a href="/Posts/@SeoHelper.ToSeoUrl(last.Title).ToLower()-@last.PostId" class="btn-readmore btn-small shape-round">
+                            Ətraflı
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var x in Model.postList)
+            {
+            <div class="grid-item ">
+                <div class="post-item">
+                    <a href="/Posts/@SeoHelper.ToSeoUrl(x.Title).ToLower()-@x.PostId"><img width="250" height="296" src="@x.tbl_photo.URL" alt="@x.Title"></a>
+                    <div class="overlay"></div>
+                    <div class="meta-info">
+                        <div class="imdb">
+                            <span class="value">5</span> <i class="far fa-eye"></i>
+                        </div>
+                        <div class="label" style="background: #ff6c00;">
+                            @x.tbl_category.Name
+                        </div>
+                        
+                    </div>
+                    <div class="content">
+                        <h4 class="title">
+                            <a href="/Posts/@SeoHelper.ToSeoUrl(x.Title).ToLower()-@x.PostId">
+                                @x.Title
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+            </div>}
+        </div>
+    </div>
+</div>

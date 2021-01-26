@@ -1,0 +1,198 @@
+﻿@model bilgorsite.ViewModel.PostVM
+@using bilgorsite.Utilities
+@using PagedList.Mvc
+@using bilgorsite.Helper
+@{
+    ViewBag.Title = "PostPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/PagedLists.css" rel="stylesheet" />
+<div id="main-content" style="background-color:#ffff;">
+    <div class="content-area">
+        <div class="page-title">
+            <div class="main-top" style="background-image: url(/Upload/images/meqale.jpg);">
+                <div class="overlay-top-header"></div>
+                <div class="content container">
+                    <h1>
+                        Postlar
+                    </h1>
+                    <div class="wrap-breadcrumb">
+                        <ul class="breadcrumbs">
+                            <li>
+                                <a href="javascript:;">
+                                    Ana Səhifə
+                                </a>
+                            </li>
+                            <li>
+                                <span class="breadcrum-icon">/</span>
+                                Postlar
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="site-content sidebar-right layout-1">
+            <div class="container">
+                <div class="row">
+                    <main class="site-main col-lg-9">
+                        <div class="wrap-main-content">
+                            <div class="products-list">
+                                <div class="wrap-element">
+                                    <div class="heading-products">
+                                        <div class="results">
+                                            Postların sayı @Model.posts.Count()
+                                        </div>
+                                        <div class="sorting-select">
+                                            <label data-style="vblog-shop-page">
+                                                <select onchange="location=this.value">
+                                                    <option>Sırala</option>
+                                                    <option value="@Url.Action("PostPage","Posts",new {searchTerm=Model.searchTerm,sortBy=(int)BookEnum.DateTime})">Tarixə görə</option>
+                                                    <option value="@Url.Action("PostPage","Posts",new {searchTerm=Model.searchTerm,sortBy=(int)BookEnum.Name})">Ada görə</option>
+                                                    <option value="@Url.Action("PostPage","Posts",new {searchTerm=Model.searchTerm,sortBy=(int)BookEnum.Default})">Populyar</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blog-list thim-1-col vblog-layout-1">
+                                    @foreach (var item in Model.posts)
+                                    {
+                                        <article class="item-blog image-item">
+                                            <div class="media-item">
+                                                <div class="pic">
+                                                    <a href="/Posts/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.PostId"><img width="839" height="440" src="@item.tbl_photo.URL" alt="@item.Title"></a>
+                                                </div>
+                                                <div class="date">
+                                                    <span style="font-size:16px;" class="number">@item.DateTime.Value.ToShortDateString()</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-item">
+                                                <h4 class="title">
+                                                    <a href="/Posts/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.PostId">
+                                                        @item.Title
+                                                    </a>
+                                                </h4>
+                                                <div class="info">
+                                                    <span class="info-item">
+                                                        <i class="ion ion-android-person"></i>
+                                                        By <a href="/Posts/Postlar/@item.aspnet_Users.UserId">@item.aspnet_Users.UserName</a>
+                                                    </span>
+                                                    <span class="info-item">
+                                                        <i class="ion ion-ios-pricetags-outline"></i>
+                                                        <a href="javascript:;">@item.tbl_category.Name</a>
+                                                    </span>
+                                                    <span class="info-item">
+                                                        <i class="ion ion-android-chat"></i>
+                                                        <a href="/Posts/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.PostId#disqus_thread"></a>
+                                                    </span>
+                                                    <span class="info-item">
+                                                        <i class="fas fa-eye"></i>
+                                                          @item.Views Baxış
+                                                    </span>
+                                                </div>
+                                                <a href="/Posts/@SeoHelper.ToSeoUrl(item.Title).ToLower()-@item.PostId" class="btn-learnmore btn-small shape-round">
+                                                    Ətraflı
+                                                </a>
+                                            </div>
+                                        </article>
+                                    }
+                                </div>
+                            </div>
+                            <ul class="loop-pagination">
+                                @Html.PagedListPager(Model.posts, page => Url.Action("PostPage", new { page }))
+                            </ul>
+                        </div>
+                    </main>
+                    <div class="widget-area col-sm-9 col-md-8 col-lg-3 sticky-sidebar">
+                        <aside class="widget widget_search">
+                            <form class="search-form" action="@Url.Action("PostPage","Posts",new { })">
+                                <label>
+                                    <span class="screen-reader-text">Axtarış:</span>
+                                    <input type="hidden" name="sortBy" value="@Model.sortBy" />
+                                    <input class="search-field" type="text" name="searchTerm" placeholder="Axtardığın Post ?">
+                                </label>
+                                <input class="search-submit" type="submit" value="Search">
+                            </form>
+                        </aside>
+                        <aside class="widget widget_categories">
+                            <h3 class="widget-title">
+                                Kateqorİyalar
+                            </h3>
+                            <select onchange="location=this.value" class="form-control">
+                                <option>Kateqoriya Seçin</option>
+                                @foreach (var x in Model.categories)
+                                {
+                                    <option class="form-control"
+                                            value="@Url.Action("PostPage","Posts",new { id=x.CategoryId,sortBy=Model.sortBy})">
+                                        @x.Name
+                                    </option>
+                                }
+                            </select>
+                        </aside>
+                        <aside class="widget widget_thim_layout_builder">
+
+                            <div class="bp-element bp-element-posts layout-list-2">
+                                <div class="wrap-element">
+                                    <div class="heading-post">
+                                        <h3 class="title">
+                                            Populyar Kİtablar
+                                        </h3>
+                                    </div>
+                                    <div class="list-posts">
+                                        @foreach (var x in Model.books)
+                                        {
+                                            <div class="post-item">
+                                                <a href="single-blog.html" class="pic">
+                                                    <img src="@x.tbl_photo.URL" alt="@x.Name">
+                                                </a>
+                                                <div class="text">
+                                                    <h4 class="title">
+                                                        <a href="single-blog.html">
+                                                            @x.Name
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                        </aside>
+                        <aside class="widget widget_tag_cloud">
+                            <h3 class="widget-title">
+                                Etİketlər
+                            </h3>
+                            <div class="tagcloud">
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Bilinən Görünməzlər
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Bilgör
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Metafizika
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Psixalogiya
+                                </a>
+                                <a href="javascript:;" class="tag-cloud-link">
+                                    Mistika
+                                </a>
+                            </div>
+                        </aside>
+                        <aside class="widget widget_text">
+                            <div class="textwidget">
+                                <a href="javascript:;">
+                                    <img src="/PublicFront/assets/images/ads-04.jpg" alt="IMG">
+                                </a>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

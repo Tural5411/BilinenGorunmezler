@@ -1,0 +1,63 @@
+﻿@model IEnumerable<bilgorsite.Models.tbl_category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_Layout1.cshtml";
+}
+
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">Kateqoriyalar</h3>
+                </div>
+                <div class="col-auto text-right">
+                    <a href="/AdminPanel/Category/Create" class="btn btn-primary add-button ml-3">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-center mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Şəkil</th>
+                                        <th>Kateqoriya</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ 
+                                        int num = 1;
+                                    }
+                                    @foreach (var x in Model)
+                                    {
+                                        <tr>
+                                            <td>@num</td>
+                                            <td>
+                                                <img style="width:100px;" class="rounded service-img mr-1" src="@x.tbl_photo.URL" alt="">
+                                            </td>
+                                            <td>@x.Name</td>
+                                            <td class="text-right">
+                                                @Html.ActionLink("Edit", "Edit", new { id = x.CategoryId })
+                                            </td>
+                                        </tr>
+                                        num++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

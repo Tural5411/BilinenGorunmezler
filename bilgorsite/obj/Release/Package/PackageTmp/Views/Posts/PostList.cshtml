@@ -1,0 +1,106 @@
+﻿@model IEnumerable<bilgorsite.Models.tbl_post>
+<div class="bp-element bp-element-st-list-videos vblog-layout-grid-1">
+    <div class="wrap-element">
+        <div class="heading-post">
+            <div class="wrap-title">
+                <h3 class="title">
+                    Məqalələr
+                </h3>
+                <a href="javascript:;" class="link">
+                    Hamısına bax
+                </a>
+            </div>
+            <div class="categories">
+                <ul>
+                    <li class="current-cat">
+                        <a href="javascript:;">
+                            Fəlsəfə
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Elm
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Psixalogiya
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Tarix
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Kosmos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            Təbiət
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid-posts grid-isotope">
+            <div class="grid-sizer"></div>
+            <div class="grid-item size_2x2">
+                <div class="post-item feature-item">
+                    <a href="single-video.html"><img src="~/PublicFront/assets/images/bg-featurepost-02.jpg" alt="IMG"></a>
+                    <div class="overlay"></div>
+                    <div class="meta-info">
+                        <div class="imdb">
+                            <span class="value">5</span>IMDb
+                        </div>
+                        <div class="label" style="background: #ff6c00;">
+                            NEW
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">
+                            <a href="single-video.html">
+                                MTV Game Awards Graphic Package The Best Of year 2018
+                            </a>
+                        </h4>
+                        <div class="info">
+                            <span>BY POLLY</span>
+                            <span>MAY 1, 2018</span>
+                        </div>
+                        <div class="description">
+                            S1 E2 Escorpión/DzecThe one Mayans seek answers from a local crew as the Galindo you worlds north and south of the border.
+                        </div>
+                        <a href="single-video.html" class="btn-readmore btn-small shape-round">
+                            read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @foreach (var x in Model)
+            {
+            <div class="grid-item ">
+                <div class="post-item">
+                    <a href="@Url.Action("PostDetail","Posts",new { id=x.PostId})"><img width="250" height="296" src="@x.tbl_photo.URL" alt="@x.Title"></a>
+                    <div class="overlay"></div>
+                    <div class="meta-info">
+                        <div class="imdb">
+                            <span class="value">5</span>@x.tbl_category.Name
+                        </div>
+                        <div class="label" style="background: #ff6c00;">
+                            Yeni
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4 class="title">
+                            <a href="@Url.Action("PostDetail","Posts",new { id=x.PostId})">
+                                @x.Title
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+            </div>}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿@{
+    var error = ViewBag.message;
+}
+<div class="card filter-card" id="filter_inputs">
+    <div class="card-body pb-0">
+        <form method="post" action="/AdminPanel/AdminUser/NewUser">
+            <div class="row filter-row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>İstifadəçi Adı</label>
+                        <input name="username" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="form-group">
+                            <input class="form-control" name="email" type="email">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>Şifrə</label>
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="Password" min="6" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>Gizli Sual</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="SecretQuestion" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>Gizli Cavab</label>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="SecretAnswer" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                        @if (error != null)
+                        {
+                            <a class="btn btn-danger">@error</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

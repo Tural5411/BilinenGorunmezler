@@ -1,0 +1,35 @@
+﻿@model bilgorsite.ViewModel.PostVM
+    @using bilgorsite.Helper
+<div class="related products-list mt-5">
+    <h2>
+        Oxşar Bloglar
+    </h2>
+    <div class="wrap-element">
+        <div class="row">
+            @foreach (var item in Model.books)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="item-product">
+                        <div class="media-item">
+                            <div class="pic">
+                                <a href="/Books/@SeoHelper.ToSeoUrl(item.Name).ToLower()-@item.BookId"><img width="220" height="300" src="@item.tbl_photo.URL" alt="@item.Name"></a>
+                            </div>
+                            <a href="javascript:;" class="btn-addcart">
+                                <i class="ion ion-android-cart"></i>
+                                Ətraflı
+                            </a>
+                        </div>
+                        <div class="text-item">
+                            <h4 class="title">
+                                <a href="single-shop.html">
+                                    @item.Name
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
